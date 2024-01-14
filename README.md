@@ -1,3 +1,8 @@
+# GitHub Actions Guide
+
+[Here.](https://discord.com/channels/1130859165942829106/1130859166488076331/1190488974528106607)
+[FAQ where you can find that link is also here](https://github.com/dleovl/Bootstrap/blob/faq/README.md)
+
 # Bootstrap
 [![GitHub stars](https://img.shields.io/github/stars/RootHide/Bootstrap?style=social)](https://github.com/RootHide/Bootstrap/stargazers)
 
