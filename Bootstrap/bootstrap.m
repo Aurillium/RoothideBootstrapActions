@@ -391,7 +391,7 @@ int bootstrap()
     // In all cases, symlink jbroot to /var/jb again
     STRAPLOG("Status: Symlinking jbroot to /var/jb");
     // There's probably a better way to do this one
-    ASSERT(spawnBootstrap((char*[]){"/usr/bin/ln", jbroot("/"), rootfs("/var/jb"), NULL}, nil, nil) == 0);
+    ASSERT(spawnBootstrap((char*[]){"/usr/bin/ln", jbroot("/"), "/var/jb", NULL}, nil, nil) == 0);
     
     ASSERT(disableRootHideBlacklist()==0);
     
