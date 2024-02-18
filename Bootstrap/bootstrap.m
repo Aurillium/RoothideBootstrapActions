@@ -378,7 +378,7 @@ int bootstrap()
     } else {
         STRAPLOG("device is strapped: %@", jbroot_path);
         
-        if([fm fileExistsAtPath:jbroot(@"/.bootstrapped")]) //beta version to public version
+        if([fm fileExistsAtPath:jbroot(@"/.bootstrapped")]) // Beta version to public version
             ASSERT([fm moveItemAtPath:jbroot(@"/.bootstrapped") toPath:jbroot(@"/.thebootstrapped") error:nil]);
         
         STRAPLOG("Status: Rerandomize jbroot");
@@ -387,6 +387,11 @@ int bootstrap()
         
         fixMobileDirectories();
     }
+
+    // In all cases, symlink jbroot to /var/jb again
+    STRAPLOG("Status: Symlinking jbroot to /var/jb");
+    // There's probably a better way to do this one
+    ASSERT(spawnBootstrap((char*[]){"/usr/bin/ln", jbroot("/"), rootfs("/var/jb"), NULL}, nil, nil) == 0);
     
     ASSERT(disableRootHideBlacklist()==0);
     
