@@ -340,15 +340,16 @@ int bootstrap()
     
     NSFileManager* fm = NSFileManager.defaultManager;
     
+    // This is still important to remove the old and potentially invalid symlink
     struct stat st;
     if(lstat("/var/jb", &st)==0) {
-        //remove /var/jb to avoid incorrect library loading via @rpath
+        // Remove /var/jb to avoid incorrect library loading via @rpath
         ASSERT([fm removeItemAtPath:@"/var/jb" error:nil]);
     }
     
     NSString* jbroot_path = find_jbroot();
     
-    if(!jbroot_path) {
+    if (!jbroot_path) {
         STRAPLOG("device is not strapped...");
         
         jbroot_path = [NSString stringWithFormat:@"/var/containers/Bundle/Application/.jbroot-%016llX", jbrand_new()];
@@ -357,7 +358,7 @@ int bootstrap()
         
         ASSERT(InstallBootstrap(jbroot_path) == 0);
         
-    } else if(![fm fileExistsAtPath:jbroot(@"/.bootstrapped")] && ![fm fileExistsAtPath:jbroot(@"/.thebootstrapped")]) {
+    } else if (![fm fileExistsAtPath:jbroot(@"/.bootstrapped")] && ![fm fileExistsAtPath:jbroot(@"/.thebootstrapped")]) {
         STRAPLOG("remove unfinished bootstrap %@", jbroot_path);
         
         uint64_t prev_jbrand = jbrand();
