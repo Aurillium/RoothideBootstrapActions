@@ -27,6 +27,7 @@ struct ContentView: View {
     @State private var newVersionAvailable = false
     @State private var newVersionReleaseURL:String = ""
     @State private var tweakEnable: Bool = !isSystemBootstrapped() || FileManager.default.fileExists(atPath: jbroot("/var/mobile/.tweakenabled"))
+    @State private var rootHideEnable: Bool = !isSystemBootstrapped() || FileManager.default.fileExists(atPath: rootfs("/var/jb"))
     
     let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
     

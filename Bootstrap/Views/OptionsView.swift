@@ -46,7 +46,17 @@ struct OptionsView: View {
                 //ScrollView {
                     VStack {
                         VStack {
-                            
+                            // For removing/creating the /var/jb symlink
+                            Toggle(isOn: $rootHideEnable, label: {
+                                Label(
+                                    title: { Text("RootHide Enable") },
+                                    icon: { Image(systemName: "wrench.and.screwdriver") }
+                                )
+                            }).padding(5)
+                            .onChange(of: rootHideEnable) { newValue in
+                                rootHideEnableAction(newValue)
+                            }
+
                             Toggle(isOn: $tweakEnable, label: {
                                 Label(
                                     title: { Text("Tweak Enable") },

@@ -22,6 +22,7 @@ OSStatus SecCodeCopySigningInformation(SecStaticCodeRef code, SecCSFlags flags, 
 @end
 
 BOOL gTweakEnabled=YES;
+BOOL gRootHideEnabled=YES;
 
 @implementation ViewController
 
@@ -302,6 +303,19 @@ void tweaEnableAction(BOOL enable)
         ASSERT([[NSString new] writeToFile:jbroot(@"/var/mobile/.tweakenabled") atomically:YES encoding:NSUTF8StringEncoding error:nil]);
     } else if([NSFileManager.defaultManager fileExistsAtPath:jbroot(@"/var/mobile/.tweakenabled")]) {
         ASSERT([NSFileManager.defaultManager removeItemAtPath:jbroot(@"/var/mobile/.tweakenabled") error:nil]);
+    }
+}
+
+void rootHideEnableAction(BOOL enable)
+{
+    gRootHideEnabled = enable;
+    
+    if(!isBootstrapInstalled()) return;
+
+    if (enable) {
+        ASSERT([NSFileManager.defaultManager linkItemAtPath:find_jbroot() toPath:rootfs(@"/var/jb") error:nil]);
+    } else if ([NSFileManager.defaultManager fileExistsAtPath:rootfs(@"/var/jb")]) {
+        ASSERT([NSFileManager.defaultManager removeItemAtPath:rootfs(@"/var/jb") error:nil]);
     }
 }
 
