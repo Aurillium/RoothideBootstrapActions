@@ -24,10 +24,11 @@ Components:\n\
 \n\
 Types: deb\n\
 URIs: https://roothide.github.io/procursus\n\
-Suites: iphoneos-arm64 iphoneos-arm64e/%d\n\
+Suites: iphoneos-arm64e iphoneos-arm64/%d\n\
 Components: main\n\
 "
 
+// For Procursus, it may not be wise to allow their console utils as they handle paths different to RootHide
 #define ALT_SOURCES "\
 Types: deb\n\
 URIs: https://iosjb.top/\n\
@@ -36,7 +37,7 @@ Components:\n\
 \n\
 Types: deb\n\
 URIs: https://iosjb.top/procursus\n\
-Suites: iphoneos-arm64e iphoneos-arm64/%d\n\
+Suites: iphoneos-arm64e/%d\n\
 Components: main\n\
 "
 
