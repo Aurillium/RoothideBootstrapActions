@@ -312,6 +312,9 @@ void rootHideEnableAction(BOOL enable)
     
     if(!isBootstrapInstalled()) return;
 
+    NSString* log=nil;
+    NSString* err=nil;
+
     if (enable) {
         ASSERT(spawnRoot(jbroot(@"/usr/bin/rm"), @[jbroot(@"/rootfs/var/jb")], &log, &err) == 0);
         //ASSERT([NSFileManager.defaultManager removeItemAtPath:@"/var/jb" error:nil]);
