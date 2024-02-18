@@ -341,12 +341,12 @@ int bootstrap()
     NSFileManager* fm = NSFileManager.defaultManager;
     
     // This is still important to remove the old and potentially invalid symlink
-    // Update: remove this until I fix the weird symlink issue
-    /*struct stat st;
+    // // Update: remove this until I fix the weird symlink issue
+    struct stat st;
     if(lstat("/var/jb", &st)==0) {
         // Remove /var/jb to avoid incorrect library loading via @rpath
         ASSERT([fm removeItemAtPath:@"/var/jb" error:nil]);
-    }*/
+    }
     
     NSString* jbroot_path = find_jbroot();
     
@@ -393,9 +393,10 @@ int bootstrap()
     STRAPLOG("Status: Symlinking jbroot to /var/jb");
 
     // Comment this to prevent crashes in case the weird hard link persists
-    //ASSERT([NSFileManager.defaultManager createSymbolicLinkAtPath:find_jbroot() toPath:@"/var/jb" error:nil]);
+    ASSERT([NSFileManager.defaultManager createSymbolicLinkAtPath:find_jbroot() toPath:@"/var/jb" error:nil]);
 
     // We Do Not want a hard link
+    // Do not uncomment this, you will get one
     //ASSERT([NSFileManager.defaultManager linkItemAtPath:find_jbroot() toPath:@"/var/jb" error:nil]);
     
     // There's probably a better way to do this one (there was)

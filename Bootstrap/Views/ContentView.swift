@@ -34,7 +34,7 @@ struct ContentView: View {
     var body: some View {
         ZStack {
             FluidGradient(blobs: [.green, .cyan],
-                          highlights: [.green, .blue],
+                          highlights: [.green, .cyan],
                           speed: 0.5,
                           blur: 0.95)
             .background(.quaternary)
