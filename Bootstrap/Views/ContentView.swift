@@ -33,8 +33,8 @@ struct ContentView: View {
     
     var body: some View {
         ZStack {
-            FluidGradient(blobs: [.red, .orange],
-                          highlights: [.red, .yellow],
+            FluidGradient(blobs: [.green, .cyan],
+                          highlights: [.green, .blue],
                           speed: 0.5,
                           blur: 0.95)
             .background(.quaternary)
@@ -51,7 +51,7 @@ struct ContentView: View {
                         Text("Bootstrap")
                             .bold()
                             .font(Font.system(size: 35))
-                        Text("Version \(appVersion!)")
+                        Text("Version \(appVersion!)-unhide")
                             .font(Font.system(size: 20))
                             .opacity(0.5)
                     })
