@@ -8,6 +8,7 @@ void respringAction();
 void rebuildappsAction();
 void reinstallPackageManager();
 void rebuildIconCacheAction();
+void rootHideEnableAction(BOOL enable);
 void tweaEnableAction(BOOL enable);
 BOOL opensshAction(BOOL enable);
 void bootstrapAction();

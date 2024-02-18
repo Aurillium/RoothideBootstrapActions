@@ -17,6 +17,7 @@ class toggleState: ObservableObject {
 struct OptionsView: View {
     @Binding var showOptions: Bool
     @Binding var tweakEnable: Bool
+    @Binding var rootHideEnable: Bool
     @StateObject var opensshStatus = toggleState(state: updateOpensshStatus(false))
     
     var body: some View {

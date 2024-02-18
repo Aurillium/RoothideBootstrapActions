@@ -226,7 +226,7 @@ struct ContentView: View {
             }
             
             if showOptions {
-                OptionsView(showOptions: $showOptions, tweakEnable: $tweakEnable)
+                OptionsView(showOptions: $showOptions, tweakEnable: $tweakEnable, rootHideEnable: $rootHideEnable)
             }
         }
         .onAppear {
