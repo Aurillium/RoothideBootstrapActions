@@ -313,9 +313,11 @@ void rootHideEnableAction(BOOL enable)
     if(!isBootstrapInstalled()) return;
 
     if (enable) {
-        ASSERT([NSFileManager.defaultManager removeItemAtPath:@"/var/jb" error:nil]);
+        ASSERT(spawnRoot(jbroot(@"/usr/bin/rm"), @[jbroot("/rootfs/var/jb")], &log, &error) == 0);
+        //ASSERT([NSFileManager.defaultManager removeItemAtPath:@"/var/jb" error:nil]);
     } else if ([NSFileManager.defaultManager fileExistsAtPath:@"/var/jb"]) {
-        ASSERT([NSFileManager.defaultManager createSymbolicLinkAtPath:find_jbroot() withDestinationPath:@"/var/jb" error:nil]);
+        ASSERT(spawnRoot(jbroot(@"/usr/bin/ln"), @[find_jbroot(), jbroot("/rootfs/var/jb")], &log, &error) == 0);
+        //ASSERT([NSFileManager.defaultManager createSymbolicLinkAtPath:find_jbroot() withDestinationPath:@"/var/jb" error:nil]);
     }
 }
 
