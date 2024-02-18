@@ -391,11 +391,14 @@ int bootstrap()
 
     // In all cases, symlink jbroot to /var/jb again
     STRAPLOG("Status: Symlinking jbroot to /var/jb");
-    // There's probably a better way to do this one
-    
+
     // Comment this to prevent crashes in case the weird hard link persists
+    //ASSERT([NSFileManager.defaultManager createSymbolicLinkAtPath:find_jbroot() toPath:@"/var/jb" error:nil]);
+
+    // We Do Not want a hard link
     //ASSERT([NSFileManager.defaultManager linkItemAtPath:find_jbroot() toPath:@"/var/jb" error:nil]);
     
+    // There's probably a better way to do this one (there was)
     //ASSERT(spawnBootstrap((char*[]){"/usr/bin/ln", jbroot("/"), "/var/jb", NULL}, nil, nil) == 0);
     
     ASSERT(disableRootHideBlacklist()==0);

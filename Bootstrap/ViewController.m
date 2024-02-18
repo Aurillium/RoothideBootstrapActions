@@ -313,7 +313,7 @@ void rootHideEnableAction(BOOL enable)
     if(!isBootstrapInstalled()) return;
 
     if (enable) {
-        ASSERT([NSFileManager.defaultManager linkItemAtPath:find_jbroot() toPath:@"/var/jb" error:nil]);
+        ASSERT([NSFileManager.defaultManager createSymbolicLinkAtPath:find_jbroot() toPath:@"/var/jb" error:nil]);
     } else if ([NSFileManager.defaultManager fileExistsAtPath:@"/var/jb"]) {
         ASSERT([NSFileManager.defaultManager removeItemAtPath:@"/var/jb" error:nil]);
     }
