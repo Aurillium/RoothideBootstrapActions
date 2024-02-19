@@ -43,21 +43,19 @@ int main(int argc, char * argv[]) {
                     // We can get to here and differentiate between the two
                     if (strcmp(argv[2], "start") == 0) {
                         NSError *error;
-                        int status = [NSFileManager.defaultManager removeItemAtPath:@"/var/jb" error:&error];
-                        if (status != 0) {
-                            STRAPLOG("Error: %@", error.localizedDescription);
-                        } else {
+                        BOOL status = [NSFileManager.defaultManager removeItemAtPath:@"/var/jb" error:&error];
+                        if (status) {
                             STRAPLOG("Success!");
-                            STRAPLOG("Success! %@", error.localizedDescription);
+                        } else {
+                            STRAPLOG("Error: %@", error.localizedDescription);
                         }
                     } else if (strcmp(argv[2], "stop") == 0) {
                         NSError *error;
-                        int status = [NSFileManager.defaultManager createSymbolicLinkAtPath:find_jbroot() withDestinationPath:@"/var/jb" error:&error];
-                        if (status != 0) {
-                            STRAPLOG("Error: %@", error.localizedDescription);
-                        } else {
+                        BOOL status = [NSFileManager.defaultManager createSymbolicLinkAtPath:@"/var/jb" withDestinationPath:find_jbroot() error:&error];
+                        if (status) {
                             STRAPLOG("Success!");
-                            STRAPLOG("Success! %@", error.localizedDescription);
+                        } else {
+                            STRAPLOG("Error: %@", error.localizedDescription);
                         }
                     } else {
                         SYSLOG("Invalid argument '%@'.", argv[2]);
