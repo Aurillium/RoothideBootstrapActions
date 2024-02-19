@@ -42,9 +42,17 @@ int main(int argc, char * argv[]) {
                 if (argc >= 3) {
                     // And now we pray
                     if (strcmp(argv[2], "start") == 0) {
-                        ASSERT([NSFileManager.defaultManager removeItemAtPath:@"/var/jb" error:nil]);
+                        NSError *error;
+                        int status = [NSFileManager.defaultManager removeItemAtPath:@"/var/jb" error:&error];
+                        if (status != 0) {
+                            STRAPLOG("Error: %@", error.localizedDescription);
+                        }
                     } else if (strcmp(argv[2], "stop") == 0) {
-                        ASSERT([NSFileManager.defaultManager createSymbolicLinkAtPath:find_jbroot() withDestinationPath:@"/var/jb" error:nil]);
+                        NSError *error;
+                        int status = [NSFileManager.defaultManager createSymbolicLinkAtPath:find_jbroot() withDestinationPath:@"/var/jb" error:&error];
+                        if (status != 0) {
+                            STRAPLOG("Error: %@", error.localizedDescription);
+                        }
                     } else {
                         SYSLOG("Invalid argument '%@'", argv[2]);
                     }
