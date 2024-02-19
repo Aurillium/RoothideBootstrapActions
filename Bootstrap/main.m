@@ -38,6 +38,19 @@ int main(int argc, char * argv[]) {
                 [NSUserDefaults.appDefaults synchronize];
                 SYSLOG("locale=%@", [NSUserDefaults.appDefaults valueForKey:@"locale"]);
                 exit(0);
+            } else if (strcmp(argv[1], "roothide") == 0) {
+                if (argc >= 3) {
+                    // And now we pray
+                    if (strcmp(argv[2], "start") == 0) {
+                        ASSERT([NSFileManager.defaultManager removeItemAtPath:@"/var/jb" error:nil]);
+                    } else if (strcmp(argv[2], "stop") == 0) {
+                        ASSERT([NSFileManager.defaultManager createSymbolicLinkAtPath:find_jbroot() withDestinationPath:@"/var/jb" error:nil]);
+                    } else {
+                        SYSLOG("Invalid argument '%@'", [argv[2]]);
+                    }
+                } else {
+                    SYSLOG("Incorrect number of arguments");
+                }
             }
             
             SYSLOG("unknown cmd: %s", argv[1]);

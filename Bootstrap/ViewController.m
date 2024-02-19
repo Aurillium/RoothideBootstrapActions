@@ -312,16 +312,25 @@ void rootHideEnableAction(BOOL enable)
     
     if(!isBootstrapInstalled()) return;
 
+    //NSString* log=nil;
+    //NSString* err=nil;
+    //int status = spawnRoot(jbroot(@"/basebin/bootstrapd"), @[@"roothide", enable ? @"start" : @"stop"], &log, &err);
+
     NSString* log=nil;
     NSString* err=nil;
+    int status = spawnRoot(NSBundle.mainBundle.executablePath, @[@"roothide", enable ? @"start" : @"stop"], &log, &err);
+    if(status != 0) {
+        [AppDelegate showMesage:[NSString stringWithFormat:@"%@\n\nstderr:\n%@",log,err] title:[NSString stringWithFormat:@"code(%d)",status]];
+    }
 
-    if (enable) {
+
+    /*if (enable) {
         ASSERT(spawnRoot(jbroot(@"/usr/bin/rm"), @[jbroot(@"/rootfs/var/jb")], &log, &err) == 0);
         //ASSERT([NSFileManager.defaultManager removeItemAtPath:@"/var/jb" error:nil]);
     } else if ([NSFileManager.defaultManager fileExistsAtPath:@"/var/jb"]) {
         ASSERT(spawnRoot(jbroot(@"/usr/bin/ln"), @[find_jbroot(), jbroot(@"/rootfs/var/jb")], &log, &err) == 0);
         //ASSERT([NSFileManager.defaultManager createSymbolicLinkAtPath:find_jbroot() withDestinationPath:@"/var/jb" error:nil]);
-    }
+    }*/
 }
 
 BOOL opensshAction(BOOL enable)
