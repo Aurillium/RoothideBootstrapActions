@@ -1,4 +1,4 @@
-# RootHide Unhide
+# RootlessRootUnHideBootStrapForDopaminelessSerotonin (RootUnhide)
 
 ##### *WARNING:* By using this software, you take full responsibility for what you do with it. Any modification to your device may cause irreparable damage.
 
@@ -14,7 +14,7 @@
 
 RootHide Bootstrap is a full featured bootstrap for iOS 14.0-17.0 A8-A17 & M1+M2 using the arm64e deb architecture providing amazing support for jailbreak detection, currently tested on iOS 15.0-17.0. It uses a modified version of the Procursus bootstrap, as is explained in the official [documentation](https://github.com/roothide/Developer/blob/main/roothide.md).
 
-The original software is available to download on its [Releases](https://github.com/roothide/Bootstrap).
+The original software is available to download on its [releases](https://github.com/roothide/Bootstrap).
 
 ## Original README
 
@@ -54,15 +54,17 @@ The latest version of TrollStore is required as the bootstrap is built around th
 
 Once you open the Bootstrap app, press Bootstrap. This will install the necessary apps and files.
 
-You can add various sources and install tweaks through Sileo, like other jailbreaks. You may need to convert tweaks to be roothide compatible if they aren't already converted or developed for this bootstrap.
+You can add various sources and install tweaks through Sileo, like other jailbreaks. ~~You may need to convert tweaks to be roothide compatible if they aren't already converted or developed for this bootstrap.~~
 
 By default, tweaks are not injected into any apps. To enable tweak injection, click App List in the Bootstrap app, and toggle on an app you want to enable your tweaks in. You **cannot** inject into SpringBoard (com.apple.springboard) at the moment by any official means, though refer to the FAQ for tools you can use to enable this functionality.
 
-**A frequently updated FAQ** is currently available [here](https://github.com/dleovl/Bootstrap/blob/faq/README.md), and can assist with tweak conversion along with answering other questions you may have.
+**A frequently updated FAQ** for the original RootHide is currently available [here](https://github.com/dleovl/Bootstrap/blob/faq/README.md), and can assist with tweak conversion along with answering other questions you may have.
 
 ### Develop tweaks
 
-Rootful and rootless tweaks aren't out-of-the-box compatible with this bootstrap, so you'll need to develop them specifically to support it. You can refer to the developer documentation [here](https://github.com/roothide/Developer).
+~~Rootful and rootless tweaks aren't out-of-the-box compatible with this bootstrap, so you'll need to develop them specifically to support it.~~
+
+While rootless tweaks are mostly compatible with unhide mode on this bootstrap, it is advisable to develop tweaks that can be used while root is hidden too. Refer to the original bootstrap's developer documentation [here](https://github.com/roothide/Developer) to do this.
 
 ### The "Our Table" Icon
 
