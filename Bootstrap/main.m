@@ -38,7 +38,7 @@ int main(int argc, char * argv[]) {
                 [NSUserDefaults.appDefaults synchronize];
                 SYSLOG("locale=%@", [NSUserDefaults.appDefaults valueForKey:@"locale"]);
                 exit(0);
-            } else if (strcmp(argv[1], "roothide") == 0) {
+            } /*else if (strcmp(argv[1], "roothide") == 0) {
                 if (argc >= 3) {
                     // We can get to here and differentiate between the two
                     if (strcmp(argv[2], "start") == 0) {
@@ -63,7 +63,7 @@ int main(int argc, char * argv[]) {
                 } else {
                     SYSLOG("Incorrect number of arguments.");
                 }
-            }
+            }*/
             
             SYSLOG("unknown cmd: %s", argv[1]);
             ABORT();

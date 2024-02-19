@@ -316,13 +316,23 @@ void rootHideEnableAction(BOOL enable)
     //NSString* err=nil;
     //int status = spawnRoot(jbroot(@"/basebin/bootstrapd"), @[@"roothide", enable ? @"start" : @"stop"], &log, &err);
 
-    NSString* log=nil;
+    /*NSString* log=nil;
     NSString* err=nil;
     int status = spawnRoot(NSBundle.mainBundle.executablePath, @[@"roothide", enable ? @"start" : @"stop"], &log, &err);
     if(status != 0) {
         [AppDelegate showMesage:[NSString stringWithFormat:@"%@\n\nstderr:\n%@",log,err] title:[NSString stringWithFormat:@"code(%d)",status]];
-    }
+    }*/
 
+    NSError *error;
+    // If true, unlink /var/jb, if false, link it
+    BOOL status =
+        enable ? [NSFileManager.defaultManager removeItemAtPath:@"/var/jb" error:&error]
+                :[NSFileManager.defaultManager createSymbolicLinkAtPath:@"/var/jb" withDestinationPath:find_jbroot() error:&error];
+
+    // Tell us if there's an error
+    if (!status) {
+        [AppDelegate showMesage:error.localizedDescription title:@"Error"];
+    }
 
     /*if (enable) {
         ASSERT(spawnRoot(jbroot(@"/usr/bin/rm"), @[jbroot(@"/rootfs/var/jb")], &log, &err) == 0);
