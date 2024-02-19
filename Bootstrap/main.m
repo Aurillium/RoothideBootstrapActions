@@ -38,32 +38,29 @@ int main(int argc, char * argv[]) {
                 [NSUserDefaults.appDefaults synchronize];
                 SYSLOG("locale=%@", [NSUserDefaults.appDefaults valueForKey:@"locale"]);
                 exit(0);
-            } /*else if (strcmp(argv[1], "roothide") == 0) {
+            } else if (strcmp(argv[1], "roothide") == 0) {
                 if (argc >= 3) {
-                    // We can get to here and differentiate between the two
+                    // If no operation runs we return an error; it's probably because of an invalid argument
+                    BOOL status = false;
+                    NSError *error;
+
                     if (strcmp(argv[2], "start") == 0) {
-                        NSError *error;
-                        BOOL status = [NSFileManager.defaultManager removeItemAtPath:@"/var/jb" error:&error];
-                        if (status) {
-                            STRAPLOG("Success!");
-                        } else {
-                            STRAPLOG("Error: %@", error.localizedDescription);
-                        }
+                        status = [NSFileManager.defaultManager removeItemAtPath:@"/var/jb" error:&error];
                     } else if (strcmp(argv[2], "stop") == 0) {
-                        NSError *error;
-                        BOOL status = [NSFileManager.defaultManager createSymbolicLinkAtPath:@"/var/jb" withDestinationPath:find_jbroot() error:&error];
-                        if (status) {
-                            STRAPLOG("Success!");
-                        } else {
-                            STRAPLOG("Error: %@", error.localizedDescription);
-                        }
+                        status = [NSFileManager.defaultManager createSymbolicLinkAtPath:@"/var/jb" withDestinationPath:find_jbroot() error:&error];
                     } else {
-                        SYSLOG("Invalid argument '%@'.", argv[2]);
+                        STRAPLOG("Invalid argument to subcommand roothide: '%@'.", argv[2]);
+                    }
+
+                    if (!status) {
+                        STRAPLOG("Error: %@", error.localizedDescription);
+                    } else {
+                        exit(0);
                     }
                 } else {
-                    SYSLOG("Incorrect number of arguments.");
+                    STRAPLOG("Incorrect number of arguments for subcommand roothide.");
                 }
-            }*/
+            }
             
             SYSLOG("unknown cmd: %s", argv[1]);
             ABORT();

@@ -312,18 +312,17 @@ void rootHideEnableAction(BOOL enable)
     
     if(!isBootstrapInstalled()) return;
 
-    //NSString* log=nil;
-    //NSString* err=nil;
-    //int status = spawnRoot(jbroot(@"/basebin/bootstrapd"), @[@"roothide", enable ? @"start" : @"stop"], &log, &err);
-
-    /*NSString* log=nil;
+    NSString* log=nil;
     NSString* err=nil;
     int status = spawnRoot(NSBundle.mainBundle.executablePath, @[@"roothide", enable ? @"start" : @"stop"], &log, &err);
     if(status != 0) {
-        [AppDelegate showMesage:[NSString stringWithFormat:@"%@\n\nstderr:\n%@",log,err] title:[NSString stringWithFormat:@"code(%d)",status]];
-    }*/
+        // This doesn't look like the error outputs for the rest of the app but I don't really like those anyway
+        // I'm considering changing them everywhere
+        [AppDelegate showMesage:[NSString stringWithFormat:@"Log:\n%@\n\nError Log:\n%@",log,err] title:[NSString stringWithFormat:@"Error %d",status]];
+    }
 
-    NSError *error;
+    // This would be so much cleaner but we don't have root perms yet
+    /*NSError *error;
     // If true, unlink /var/jb, if false, link it
     BOOL status =
         enable ? [NSFileManager.defaultManager removeItemAtPath:@"/var/jb" error:&error]
@@ -332,14 +331,6 @@ void rootHideEnableAction(BOOL enable)
     // Tell us if there's an error
     if (!status) {
         [AppDelegate showMesage:error.localizedDescription title:@"Error"];
-    }
-
-    /*if (enable) {
-        ASSERT(spawnRoot(jbroot(@"/usr/bin/rm"), @[jbroot(@"/rootfs/var/jb")], &log, &err) == 0);
-        //ASSERT([NSFileManager.defaultManager removeItemAtPath:@"/var/jb" error:nil]);
-    } else if ([NSFileManager.defaultManager fileExistsAtPath:@"/var/jb"]) {
-        ASSERT(spawnRoot(jbroot(@"/usr/bin/ln"), @[find_jbroot(), jbroot(@"/rootfs/var/jb")], &log, &err) == 0);
-        //ASSERT([NSFileManager.defaultManager createSymbolicLinkAtPath:find_jbroot() withDestinationPath:@"/var/jb" error:nil]);
     }*/
 }
 
