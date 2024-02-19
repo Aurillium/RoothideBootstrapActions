@@ -2,7 +2,9 @@
 
 ##### *WARNING:* By using this software, you take full responsibility for what you do with it. Any modification to your device may cause irreparable damage.
 
-# GitHub Actions Guide
+This project is currently extremely unfinished, and so to discourage premature usage by people who don't have the technical experience necessary to use this tool without potentially damaging their RootHide setup, there is no usage guide yet. If you do have technical experience with jailbroken iOS and RootHide, ping DigitalSorcerer in the RootHide Discord server (link on the RootHide Bootstrap repo). A guide will be added when the project enters beta.
+
+## GitHub Actions Guide (for me, will be updated later)
 
 [Here.](https://discord.com/channels/1130859165942829106/1130859166488076331/1190488974528106607)
 
@@ -10,11 +12,11 @@
 
 [Also an automated rolling release is here](https://github.com/dleovl/Bootstrap/releases/tag/release). It's by the person who wrote the script I'm using now.
 
-# Original RootHide Bootstrap
+## Original RootHide Bootstrap
 
 RootHide Bootstrap is a full featured bootstrap for iOS 14.0-17.0 A8-A17 & M1+M2 using the arm64e deb architecture providing amazing support for jailbreak detection, currently tested on iOS 15.0-17.0. It uses a modified version of the Procursus bootstrap, as is explained in the official [documentation](https://github.com/roothide/Developer/blob/main/roothide.md).
 
-The original software is available to download on its [releases](https://github.com/roothide/Bootstrap).
+The original software is available to download from its [GitHub](https://github.com/roothide/Bootstrap).
 
 ## Original README
 
