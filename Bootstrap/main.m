@@ -46,7 +46,7 @@ int main(int argc, char * argv[]) {
                     } else if (strcmp(argv[2], "stop") == 0) {
                         ASSERT([NSFileManager.defaultManager createSymbolicLinkAtPath:find_jbroot() withDestinationPath:@"/var/jb" error:nil]);
                     } else {
-                        SYSLOG("Invalid argument '%@'", [argv[2]]);
+                        SYSLOG("Invalid argument '%@'", argv[2]);
                     }
                 } else {
                     SYSLOG("Incorrect number of arguments");
