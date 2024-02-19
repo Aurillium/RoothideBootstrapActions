@@ -1,3 +1,7 @@
+# RootHide Unhide
+
+##### *WARNING:* By using this software, you take full responsibility for what you do with it. Any modification to your device may cause irreparable damage.
+
 # GitHub Actions Guide
 
 [Here.](https://discord.com/channels/1130859165942829106/1130859166488076331/1190488974528106607)
@@ -6,17 +10,15 @@
 
 [Also an automated rolling release is here](https://github.com/dleovl/Bootstrap/releases/tag/release). It's by the person who wrote the script I'm using now.
 
-# Bootstrap
+# Original RootHide Bootstrap
 
-[![GitHub stars](https://img.shields.io/github/stars/roothide/Bootstrap?style=social)](https://github.com/roothide/Bootstrap/stargazers)
+RootHide Bootstrap is a full featured bootstrap for iOS 14.0-17.0 A8-A17 & M1+M2 using the arm64e deb architecture providing amazing support for jailbreak detection, currently tested on iOS 15.0-17.0. It uses a modified version of the Procursus bootstrap, as is explained in the official [documentation](https://github.com/roothide/Developer/blob/main/roothide.md).
 
-A full featured bootstrap for iOS 14.0-17.0 A8-A17 & M1+M2 using the arm64e deb architecture providing amazing support for jailbreak detection. (Currently only tested tested on iOS 15.0-17.0)
+The original software is available to download on its [Releases](https://github.com/roothide/Bootstrap).
 
-##### *WARNING:* By using this software, you take full responsibility for what you do with it. Any modification to your device may cause irreparable damage.
+## Original README
 
-This software is available to download on its [Releases](https://github.com/roothide/Bootstrap/releases).
-
-## Building
+### Building
 
 If you do not have MacOS, check the FAQ in the Usage section of this README to build with GitHub Actions instead.
 
@@ -46,7 +48,7 @@ You will need Homebrew installed. If you don't have Homebrew installed, run the 
 
  6. Transfer `Bootstrap.tipa` from `./packages/` to your device and install it with TrollStore!
 
-## Usage
+### Usage
 
 The latest version of TrollStore is required as the bootstrap is built around the CoreTrust bug. Developer mode also needs to be enabled, so use TrollStore version 2.0.9 or later to automatically enable it.
 
@@ -58,21 +60,17 @@ By default, tweaks are not injected into any apps. To enable tweak injection, cl
 
 **A frequently updated FAQ** is currently available [here](https://github.com/dleovl/Bootstrap/blob/faq/README.md), and can assist with tweak conversion along with answering other questions you may have.
 
-## Develop tweaks
+### Develop tweaks
 
 Rootful and rootless tweaks aren't out-of-the-box compatible with this bootstrap, so you'll need to develop them specifically to support it. You can refer to the developer documentation [here](https://github.com/roothide/Developer).
 
-## Discord
-
-You can join our Discord for support or general talk [here](https://discord.com/invite/scqCkumAYp). There's a FAQ channel if you need any more information.
-
-## The "Our Table" Icon
+### The "Our Table" Icon
 
 [Alpha](https://github.com/TheAlphaStream) is the one who made the ProcursusTeam logo in the first place, and then edited by @sourcelocation
 
 ## Credits
 
-Huge thanks to these people, we couldn't have completed this project without their help!
+A massive shoutout to [RootHide](https://github.com/roothide/) for the original project, and of course, everyone listed below has done an incredible amount for the jailbreak community and this project, nor RootHide, would not be around without their contributions.
 
 - absidue: [https://github.com/absidue](https://github.com/absidue)
 - akusio: [https://twitter.com/akusio_rr](https://twitter.com/akusio_rr)
