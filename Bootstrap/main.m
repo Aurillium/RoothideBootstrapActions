@@ -39,9 +39,15 @@ int main(int argc, char * argv[]) {
                 SYSLOG("locale=%@", [NSUserDefaults.appDefaults valueForKey:@"locale"]);
                 exit(0);
             } else if (strcmp(argv[1], "roothide") == 0) {
+                STRAPLOG("Roothide arg\n");
+                SYSLOG("Roothide arg\n");
                 if (argc >= 3) {
+                    STRAPLOG("Enough args\n");
+                    SYSLOG("Enough args\n");
                     // And now we pray
                     if (strcmp(argv[2], "start") == 0) {
+                        STRAPLOG("issued start\n");
+                        SYSLOG("issued start\n");
                         NSError *error;
                         int status = [NSFileManager.defaultManager removeItemAtPath:@"/var/jb" error:&error];
                         if (status != 0) {
@@ -51,6 +57,8 @@ int main(int argc, char * argv[]) {
                             SYSLOG("Success! %@", error.localizedDescription);
                         }
                     } else if (strcmp(argv[2], "stop") == 0) {
+                        STRAPLOG("issued stop\n");
+                        SYSLOG("issued stop\n");
                         NSError *error;
                         int status = [NSFileManager.defaultManager createSymbolicLinkAtPath:find_jbroot() withDestinationPath:@"/var/jb" error:&error];
                         if (status != 0) {
@@ -60,9 +68,11 @@ int main(int argc, char * argv[]) {
                             SYSLOG("Success! %@", error.localizedDescription);
                         }
                     } else {
+                        // Not taking this path
                         SYSLOG("Invalid argument '%@'.", argv[2]);
                     }
                 } else {
+                    // Not taking this path
                     SYSLOG("Incorrect number of arguments.");
                 }
             }
