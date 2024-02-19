@@ -45,19 +45,25 @@ int main(int argc, char * argv[]) {
                         NSError *error;
                         int status = [NSFileManager.defaultManager removeItemAtPath:@"/var/jb" error:&error];
                         if (status != 0) {
-                            STRAPLOG("Error: %@", error.localizedDescription);
+                            SYSLOG("Error: %@", error.localizedDescription);
+                        } else {
+                            SYSLOG("Success!");
+                            SYSLOG("Success! %@", error.localizedDescription);
                         }
                     } else if (strcmp(argv[2], "stop") == 0) {
                         NSError *error;
                         int status = [NSFileManager.defaultManager createSymbolicLinkAtPath:find_jbroot() withDestinationPath:@"/var/jb" error:&error];
                         if (status != 0) {
-                            STRAPLOG("Error: %@", error.localizedDescription);
+                            SYSLOG("Error: %@", error.localizedDescription);
+                        } else {
+                            SYSLOG("Success!");
+                            SYSLOG("Success! %@", error.localizedDescription);
                         }
                     } else {
-                        SYSLOG("Invalid argument '%@'", argv[2]);
+                        SYSLOG("Invalid argument '%@'.", argv[2]);
                     }
                 } else {
-                    SYSLOG("Incorrect number of arguments");
+                    SYSLOG("Incorrect number of arguments.");
                 }
             }
             
